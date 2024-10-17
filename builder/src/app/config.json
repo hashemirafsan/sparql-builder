@@ -1,0 +1,168 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "volipi": "http://data.sparna.fr/ontologies/volipi#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skosthes": "http://purl.org/iso25964/skos-thes#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "dct": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "euvoc": "http://publications.europa.eu/ontology/euvoc#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "adms": "http://www.w3.org/ns/adms#",
+    "org": "http://www.w3.org/ns/org#",
+    "xls2rdf": "https://xls2rdf.sparna.fr/vocabulary#",
+    "this": "https://data.example.com/ontologies/sparnatural-config/",
+    "dbpedia": "http://dbpedia.org/ontology/",
+    "odb": "http://example.com/ontology/odb#",
+    "core": "http://data.sparna.fr/ontologies/sparnatural-config-core#",
+    "datasources": "http://data.sparna.fr/ontologies/sparnatural-config-datasources#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dash": "http://datashapes.org/dash#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "skosxl": "http://www.w3.org/2008/05/skos-xl#"
+  },
+  "@id": "https://data.mydomain.com/ontologies/sparnatural-config",
+  "@type": "owl:Ontology",
+  "this:Vehicle": {
+    "@type": "sh:NodeShape",
+    "sh:order": {"@value": 1, "@type": "xsd:integer"},
+    "volipi:iconName": "fa-solid fa-car",
+    "sh:targetClass": "odb:Vehicle",
+    "rdfs:label": [
+      {"@value": "Vehicle", "@language": "en"},
+      {"@value": "Véhicule", "@language": "fr"}
+    ],
+    "sh:description": [
+      {"@value": "A vehicle is a car model for a specific brand.", "@language": "en"},
+      {"@value": "Un véhicule est un modèle de voiture pour une marque spécifique.", "@language": "fr"}
+    ],
+    "sh:property": [
+      "this:Vehicle_VIN",
+      "this:Vehicle_hasManufacturer"
+    ]
+  },
+  "this:Museum": {
+    "@type": "sh:NodeShape",
+    "sh:order": {"@value": 1, "@type": "xsd:integer"},
+    "volipi:iconName": "fad fa-university",
+    "sh:targetClass": "dbpedia:Museum",
+    "rdfs:label": [
+      {"@value": "Museum", "@language": "en"},
+      {"@value": "Musée", "@language": "fr"}
+    ],
+    "sh:description": [
+      {"@value": "A DBPedia Museum", "@language": "en"},
+      {"@value": "Un Musée DBPedia", "@language": "fr"}
+    ],
+    "sh:property": "this:Museum_country"
+  },
+  "this:Country": {
+    "@type": "sh:NodeShape",
+    "sh:order": {"@value": 2, "@type": "xsd:integer"},
+    "volipi:iconName": "fad fa-globe-africa",
+    "sh:targetClass": "dbpedia:Country",
+    "rdfs:label": [
+      {"@value": "Country", "@language": "en"},
+      {"@value": "Pays", "@language": "fr"}
+    ],
+    "sh:description": [
+      {"@value": "A DBPedia Country", "@language": "en"},
+      {"@value": "Un Pays DBPedia", "@language": "fr"}
+    ],
+    "sh:property": [
+      "this:Country_countryOf",
+      "this:country_label"
+    ]
+  },
+  "this:Vehicle_VIN": {
+    "sh:path": "odb:VIN",
+    "sh:order": 1,
+    "sh:name": [
+      {"@value": "has VIN", "@language": "en"},
+      {"@value": "a pour VIN", "@language": "fr"}
+    ],
+    "sh:description": [
+      {"@value": "Specifies the Vehicle Identification Number (VIN) of the vehicle.", "@language": "en"},
+      {"@value": "Spécifie le numéro d'identification du véhicule (VIN).", "@language": "fr"}
+    ],
+    "sh:minCount": {"@value": 1, "@type": "xsd:integer"},
+    "sh:maxCount": {"@value": 1, "@type": "xsd:integer"},
+    "sh:nodeKind": "sh:Literal",
+    "sh:datatype": "xsd:string",
+    "dash:searchWidget": "core:AutocompleteProperty",
+    "dash:propertyRole": "dash:LabelRole"
+  },
+  "this:Vehicle_hasManufacturer": {
+    "sh:path": "odb:hasManufacturer",
+    "sh:order": 2,
+    "sh:name": [
+      {"@value": "has manufacturer", "@language": "en"},
+      {"@value": "a pour constructeur", "@language": "fr"}
+    ],
+    "sh:description": [
+      {"@value": "Specifies the manufacturer of the vehicle.", "@language": "en"},
+      {"@value": "Spécifie le constructeur d'un véhicule.", "@language": "fr"}
+    ],
+    "sh:minCount": {"@value": 1, "@type": "xsd:integer"},
+    "sh:maxCount": {"@value": 1, "@type": "xsd:integer"},
+    "sh:nodeKind": "sh:IRI",
+    "sh:class": "odb:Manufacturer",
+    "dash:searchWidget": "core:ListProperty",
+    "core:enableNegation": {"@value": true, "@type": "xsd:boolean"}
+  },
+  "this:Museum_country": {
+    "sh:path": "dbpedia:country",
+    "sh:order": 1,
+    "sh:name": [
+      {"@value": "country", "@language": "en"},
+      {"@value": "pays", "@language": "fr"}
+    ],
+    "sh:description": [
+      {"@value": "Specifies the country where the museum is located.", "@language": "en"},
+      {"@value": "Spécifie le pays où se trouve le musée.", "@language": "fr"}
+    ],
+    "sh:minCount": {"@value": 1, "@type": "xsd:integer"},
+    "sh:nodeKind": "sh:IRI",
+    "sh:class": "dbpedia:Country",
+    "dash:searchWidget": "core:ListProperty",
+    "core:enableOptional": {"@value": true, "@type": "xsd:boolean"},
+    "core:enableNegation": {"@value": true, "@type": "xsd:boolean"}
+  },
+  "this:Country_countryOf": {
+    "sh:path": "dbpedia:countryOf",
+    "sh:order": 1,
+    "sh:name": [
+      {"@value": "country of", "@language": "en"},
+      {"@value": "pays de", "@language": "fr"}
+    ],
+    "sh:description": [
+      {"@value": "Specifies the museums located in this country.", "@language": "en"},
+      {"@value": "Spécifie les musées situés dans ce pays.", "@language": "fr"}
+    ],
+    "sh:minCount": {"@value": 1, "@type": "xsd:integer"},
+    "sh:nodeKind": "sh:IRI",
+    "sh:class": "dbpedia:Museum",
+    "dash:searchWidget": "core:AutocompleteProperty",
+    "core:enableOptional": {"@value": true, "@type": "xsd:boolean"},
+    "core:enableNegation": {"@value": true, "@type": "xsd:boolean"}
+  },
+  "this:country_label": {
+    "sh:path": "rdfs:label",
+    "sh:name": [
+      {"@value": "label", "@language": "en"},
+      {"@value": "libellé", "@language": "fr"}
+    ],
+    "sh:minCount": {"@value": 1, "@type": "xsd:integer"},
+    "sh:nodeKind": "sh:Literal",
+    "sh:datatype": "rdf:langString",
+    "dash:propertyRole": "dash:LabelRole"
+  }
+}
