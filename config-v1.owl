@@ -1,0 +1,36 @@
+@prefix crops: <http://example.org/crops/> .
+@prefix ex: <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+# OWL Ontology Declaration
+<http://example.org/crops/cropmap> rdf:type owl:Ontology .
+
+# Object Property Definition for 'hasID'
+crops:hasID rdf:type owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range xsd:int .
+
+# Mapping Declaration in OWL (using Blank Node for mapping)
+[] rdf:type geo:Geometry ;
+    crops:hasID ?gid ;
+    geo:asWKT "<http://www.opengis.net/def/crs/EPSG/0/27700> ?wkt"^^geo:wktLiteral .
+
+# SQL Source for the mapping
+# Source: SELECT gid, cromeid AS id, ST_AsText(geom) AS wkt FROM cropmap
+
+# Individual (Blank Node) representing a specific cell
+[] rdf:type geo:Geometry ;
+    crops:hasID "{gid}"^^xsd:int ;
+    geo:asWKT "<http://www.opengis.net/def/crs/EPSG/0/27700> {wkt}"^^geo:wktLiteral .
+
+# Property Definitions
+geo:asWKT rdf:type owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:wktLiteral .
