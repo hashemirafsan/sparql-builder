@@ -27,7 +27,7 @@ export default function Home() {
         <div id="ui-search">
           <spar-natural
               ref={sparnaturalRef}
-              src={'https://raw.githubusercontent.com/hashemirafsan/sparql-builder/refs/heads/main/config.ttl'}
+              src={'https://raw.githubusercontent.com/hashemirafsan/sparql-builder/refs/heads/main/config-v2.ttl'}
               lang={'en'}
               defaultLang={'en'}
               endpoint={'https://dbpedia.org/sparql'}

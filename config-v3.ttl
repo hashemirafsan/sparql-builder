@@ -10,9 +10,7 @@
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 
 # Example for crop map cells
-_:cell a geo:Geometry ;
-    crops:hasID ?id ;
-    geo:asWKT "<http://www.opengis.net/def/crs/EPSG/0/27700> ?wkt"^^geo:wktLiteral .
+_:cell a geo:Geometry ; crops:hasID ?id ; geo:asWKT "<http://www.opengis.net/def/crs/EPSG/0/27700> ?wkt"^^geo:wktLiteral .
 
 # Corresponding SQL source for mapping
 # Source SQL: SELECT cromeid AS id, ST_ASTEXT(geom) AS wkt FROM "cropmap"
