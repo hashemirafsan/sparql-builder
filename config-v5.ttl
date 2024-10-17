@@ -8,6 +8,22 @@
 @prefix obda: <https://w3id.org/obda/vocabulary#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+# Shape for geo:Geometry (crop map cells)
+crops:GeometryShape a sh:NodeShape ;
+    sh:targetClass geo:Geometry ;  # Apply to all instances of geo:Geometry
+    sh:property [
+        sh:path crops:hasID ;
+        sh:datatype xsd:int ;  # Ensure hasID is an integer
+        sh:minCount 1 ;  # Must have at least one hasID
+    ] ;
+    sh:property [
+        sh:path geo:asWKT ;
+        sh:datatype geo:wktLiteral ;  # Ensure asWKT is of the correct literal type
+        sh:minCount 1 ;  # Must have at least one asWKT
+    ] .
 
 # Full IRI for the crop map cell instead of a prefixed name with a slash
 <http://example.org/crops/cropmap/cell123> a geo:Geometry ;
