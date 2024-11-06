@@ -1,0 +1,54 @@
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix this: <https://data.mydomain.com/ontologies/sparnatural-config/> .
+@prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix env: <http://environment.data.gov.uk/flood-monitoring/def/core/> .
+@prefix ontoflood: <https://www.theworldavatar.com/kg/ontoflood/> .
+
+<https://www.theworldavatar.com/kg/ontoflood/> a owl:Ontology;
+  dcterms:source <https://raw.githubusercontent.com/cambridge-cares/TheWorldAvatar/refs/heads/main/JPS_Ontology/ontology/ontoflood/OntoFlood%20TBox.owl> .
+
+this:FloodArea a sh:NodeShape;
+  sh:order "1"^^xsd:integer;
+  volipi:iconName "fa-solid fa-paint-brush";
+  sh:targetClass env:FloodArea;
+  sh:nodeKind sh:IRI;
+  rdfs:label "FloodArea"@en;
+  sh:description "Area for which a flood warning or alert service is provided (i.e. area to which a flood warning/alert applies)."@en;
+  sh:property this:FloodArea_label, this:FloodArea_hasLocation .
+
+this:Location a sh:NodeShape;
+  sh:order "2"^^xsd:integer;
+  volipi:iconName "fa-solid fa-paint-brush";
+  sh:targetClass ontoflood:Location;
+  sh:nodeKind sh:IRI;
+  rdfs:label "Location"@en;
+  sh:description "The location associated with an event."@en .
+
+this:FloodArea_hasLocation sh:path ontoflood:hasLocation;
+  sh:name "hasLocation"@en;
+  sh:description "A relationship between a (forecasted) event and its geospatial location."@en;
+  sh:nodeKind sh:IRI;
+  sh:class ontoflood:Location;
+  dash:searchWidget core:AutocompleteProperty;
+  datasources:datasource datasources:search_rdfslabel_strstarts;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:FloodArea_label sh:path rdfs:label;
+  sh:name "label"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  dash:propertyRole dash:LabelRole;
+  core:enableOptional "false"^^xsd:boolean;
+  core:enableNegation "false"^^xsd:boolean .
