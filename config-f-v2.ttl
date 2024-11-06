@@ -15,7 +15,7 @@
 <https://www.theworldavatar.com/kg/ontoflood/> a owl:Ontology;
   dcterms:source <https://raw.githubusercontent.com/cambridge-cares/TheWorldAvatar/refs/heads/main/JPS_Ontology/ontology/ontoflood/OntoFlood%20TBox.owl> .
 
-this:FloodArea a sh:NodeShape;
+env:FloodArea a sh:NodeShape;
   sh:order "1"^^xsd:integer;
   volipi:iconName "fa-solid fa-paint-brush";
   sh:targetClass env:FloodArea;
@@ -24,7 +24,7 @@ this:FloodArea a sh:NodeShape;
   sh:description "Area for which a flood warning or alert service is provided (i.e. area to which a flood warning/alert applies)."@en;
   sh:property this:FloodArea_label, this:FloodArea_hasLocation .
 
-this:Location a sh:NodeShape;
+ontoflood:Location a sh:NodeShape;
   sh:order "2"^^xsd:integer;
   volipi:iconName "fa-solid fa-paint-brush";
   sh:targetClass ontoflood:Location;
