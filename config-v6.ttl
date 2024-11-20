@@ -1,0 +1,312 @@
+@prefix schema: <http://schema.org/> .
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix xls2rdf: <https://xls2rdf.sparna.fr/vocabulary#> .
+@prefix this: <https://data.mydomain.com/ontologies/sparnatural-config/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix odb: <http://example.com/ontology/odb#> .
+@prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix sparql: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix ontoflood: <https://www.theworldavatar.com/kg/ontoflood/> .
+@prefix om: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@prefix ontopoi: <https://www.theworldavatar.com/kg/ontopoi/> .
+@prefix geospecies: <http://rdf.geospecies.org/ont/geospecies#> .
+
+<https://www.theworldavatar.com/kg/ontoflood> a owl:Ontology;
+  dcterms:source <https://raw.githubusercontent.com/cambridge-cares/TheWorldAvatar/refs/heads/main/JPS_Ontology/ontology/ontoflood/OntoFlood%20TBox.owl> .
+
+this:Flood a sh:NodeShape;
+  sh:order "1"^^xsd:integer;
+  volipi:iconName "fa-solid fa-paint-brush";
+  sh:targetClass obo:ENVO_01000710;
+  sh:nodeKind sh:IRI;
+  rdfs:label "Flood"@en;
+  sh:description "An unusual accumulation of water above the ground caused by high tide, heavy rain, melting snow or rapid runoff from paved areas"@en;
+  sh:property this:Flood_label, this:Flood_location, this:Flood_startDate, this:Flood_impact,
+    this:Flood_thumbnail, this:Flood_description .
+
+this:Location a sh:NodeShape;
+  sh:order "2"^^xsd:integer;
+  volipi:iconName "fa-solid fa-globe-africa";
+  sh:targetClass ontoflood:Location;
+  sh:nodeKind sh:IRI;
+  rdfs:label "Location"@en;
+  sh:description "The place or area where a natural hazard occurs"@en;
+  sh:property this:Location_country, this:Location_label .
+
+this:Impact a sh:NodeShape;
+  sh:order "3"^^xsd:integer;
+  volipi:iconName "fa-solid fa-university";
+  sh:targetClass ontoflood:Impact;
+  sh:nodeKind sh:IRI;
+  rdfs:label "Impact"@en;
+  sh:description "The monetary impact or loss of an event taking place"@en;
+  sh:property this:Impact_amount, this:Impact_label, this:Impact_thumbnail, this:Impact_description .
+
+this:AmountOfMoney a sh:NodeShape;
+  sh:order "4"^^xsd:integer;
+  volipi:iconName "fa-solid fa-university";
+  sh:targetClass ontoflood:AmountOfMoney;
+  sh:nodeKind sh:IRI;
+  rdfs:label "Amount of money"@en;
+  sh:description "The monetary value lost in a naturally occured hazardous event"@en;
+  sh:property this:Amount_value, this:Amount_unit, this:Amount_thumbnail, this:Amount_description .
+
+this:Country a sh:NodeShape;
+  sh:order "5"^^xsd:integer;
+  volipi:iconName "fa-solid fa-globe-africa";
+  sh:targetClass dbpedia:Country;
+  sh:nodeKind sh:IRI;
+  rdfs:label "Country"@en;
+  sh:description "A DBPedia Country"@en;
+  sh:property this:Country_label .
+
+this:Image a sh:NodeShape;
+  sh:order "10"^^xsd:integer;
+  volipi:iconName "fa-solid fa-image";
+  sh:nodeKind sh:Literal;
+  rdfs:label "Image"@en .
+
+this:Date a sh:NodeShape;
+  sh:order "11"^^xsd:integer;
+  volipi:iconName "fa-solid fa-calendar-alt";
+  sh:nodeKind sh:Literal;
+  rdfs:label "Date"@en;
+  sh:description "A date"@en .
+
+this:Text a sh:NodeShape;
+  sh:order "12"^^xsd:integer;
+  volipi:iconName "fa-solid fa-a";
+  sh:nodeKind sh:Literal;
+  rdfs:label "Text"@en;
+  sh:description "An attribute, a property that describes the object, like a name or a description. <br/><br/>Use this to select the name of the object."@en .
+
+this:Number a sh:NodeShape;
+  sh:order "13"^^xsd:integer;
+  volipi:iconName "fa-solid fa-1";
+  sh:nodeKind sh:Literal;
+  rdfs:label "Number"@en .
+
+this:Flood_label sh:path rdfs:label;
+  sh:name "label"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  dash:propertyRole dash:LabelRole;
+  core:enableOptional "false"^^xsd:boolean;
+  core:enableNegation "false"^^xsd:boolean .
+
+this:Location_label sh:path rdfs:label;
+  sh:name "label"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  dash:propertyRole dash:LabelRole;
+  core:enableOptional "false"^^xsd:boolean;
+  core:enableNegation "false"^^xsd:boolean .
+
+this:Impact_label sh:path rdfs:label;
+  sh:name "label"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  dash:propertyRole dash:LabelRole;
+  core:enableOptional "false"^^xsd:boolean;
+  core:enableNegation "false"^^xsd:boolean .
+
+this:Amount_unit sh:path om:unit;
+  sh:name "unit"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  core:enableOptional "false"^^xsd:boolean;
+  core:enableNegation "false"^^xsd:boolean .
+
+this:Amount_value sh:path om:hasNumericalValue;
+  sh:name "monetary value"@en;
+  sh:nodeKind sh:Literal;
+  sh:node this:Number;
+  dash:searchWidget core:NumberProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Flood_location sh:path ontoflood:hasLocation;
+  sh:name "location"@en;
+  sh:description "the location associated with a flood event"@en;
+  sh:nodeKind sh:IRI;
+  sh:class ontoflood:Location;
+  dash:searchWidget core:AutocompleteProperty;
+  datasources:datasource datasources:search_rdfslabel_strstarts;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Location_country sh:path geospecies:hasCountry;
+  sh:name "country"@en;
+  sh:description "the country a location belongs to"@en;
+  sh:nodeKind sh:IRI;
+  sh:class dbpedia:Country;
+  dash:searchWidget core:AutocompleteProperty;
+  datasources:datasource datasources:search_rdfslabel_strstarts;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Flood_startDate sh:path xsd:date;
+  sh:name "start date"@en;
+  sh:nodeKind sh:Literal;
+  sh:node this:Date;
+  dash:searchWidget core:NumberProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Flood_impact sh:path ontoflood:resultsIn;
+  sh:name "results in"@en;
+  sh:nodeKind sh:IRI;
+  sh:class ontoflood:Impact;
+  dash:searchWidget core:AutocompleteProperty;
+  datasources:datasource datasources:search_rdfslabel_strstarts;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Impact_amount sh:path ontoflood:hasMonetaryValue;
+  sh:name "results in"@en;
+  sh:nodeKind sh:IRI;
+  sh:class ontoflood:AmountOfMoney;
+  dash:searchWidget core:AutocompleteProperty;
+  datasources:datasource datasources:search_rdfslabel_strstarts;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Impact_thumbnail sh:path dbpedia:thumbnail;
+  sh:name "thumbnail"@en;
+  sh:nodeKind sh:IRI;
+  sh:node this:Image;
+  dash:searchWidget core:NonSelectableProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Flood_thumbnail sh:path dbpedia:thumbnail;
+  sh:name "thumbnail"@en;
+  sh:nodeKind sh:IRI;
+  sh:node this:Image;
+  dash:searchWidget core:NonSelectableProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Amount_thumbnail sh:path dbpedia:thumbnail;
+  sh:name "thumbnail"@en;
+  sh:nodeKind sh:IRI;
+  sh:node this:Image;
+  dash:searchWidget core:NonSelectableProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Amount_description sh:path rdfs:comment;
+  sh:name "description"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Impact_description sh:path rdfs:comment;
+  sh:name "description"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Flood_description sh:path rdfs:comment;
+  sh:name "description"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Location_country sh:path dbpedia:Country;
+  sh:name "country"@en;
+  sh:description "Specifies the country where the place is located."@en;
+  sh:nodeKind sh:IRI;
+  sh:class dbpedia:Country;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_count;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Location_label sh:path rdfs:label;
+  sh:name "label"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  dash:propertyRole dash:LabelRole;
+  core:enableOptional "false"^^xsd:boolean;
+  core:enableNegation "false"^^xsd:boolean .
+
+this:Location_thumbnail sh:path dbpedia:thumbnail;
+  sh:name "thumbnail"@en;
+  sh:nodeKind sh:IRI;
+  sh:node this:Image;
+  dash:searchWidget core:NonSelectableProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Location_description sh:path rdfs:comment;
+  sh:name "description"@en;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:SearchProperty;
+  core:enableOptional "true"^^xsd:boolean;
+  core:enableNegation "true"^^xsd:boolean .
+
+this:Country_label sh:path rdfs:label;
+  sh:name "label"@en, "libellé"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node this:Text;
+  dash:searchWidget core:AutocompleteProperty;
+  dash:propertyRole dash:LabelRole;
+  core:enableOptional "false"^^xsd:boolean;
+  core:enableNegation "false"^^xsd:boolean .
