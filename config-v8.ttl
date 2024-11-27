@@ -17,7 +17,7 @@
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix xls2rdf: <https://xls2rdf.sparna.fr/vocabulary#> .
-@prefix this: <https://data.mydomain.com/ontologies/sparnatural-config/> .
+@prefix this: <https://www.theworldavatar.com/kg/ontoflood/> .
 @prefix dbpedia: <http://dbpedia.org/ontology/> .
 @prefix odb: <http://example.com/ontology/odb#> .
 @prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
@@ -41,7 +41,7 @@
 this:Flood a sh:NodeShape;
   sh:order "1"^^xsd:integer;
   volipi:iconName "fa-solid fa-paint-brush";
-  sh:targetClass obo:ENVO_01000710;
+  sh:targetClass ontoflood:Flood;
   sh:nodeKind sh:IRI;
   rdfs:label "Flood"@en;
   sh:description "An unusual accumulation of water above the ground caused by high tide, heavy rain, melting snow or rapid runoff from paved areas"@en;
@@ -110,7 +110,7 @@ this:Number a sh:NodeShape;
   sh:nodeKind sh:Literal;
   rdfs:label "Number"@en .
 
-this:Flood_label sh:path rdfs:label;
+rdfs:label sh:path rdfs:label;
   sh:name "label"@en;
   sh:minCount "1"^^xsd:integer;
   sh:nodeKind sh:Literal;
