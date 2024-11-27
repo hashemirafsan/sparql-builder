@@ -45,7 +45,7 @@ obo:ENVO_01000710 a sh:NodeShape;
   sh:nodeKind sh:IRI;
   rdfs:label "Flood"@en;
   sh:description "An unusual accumulation of water above the ground caused by high tide, heavy rain, melting snow or rapid runoff from paved areas"@en;
-  sh:property rdfs:label, this:Flood_location, this:Flood_startDate, this:Flood_impact,
+  sh:property rdfs:label, this:hasLocation, this:Flood_startDate, this:Flood_impact,
     this:Flood_thumbnail, this:Flood_description .
 
 this:Location a sh:NodeShape;
@@ -150,7 +150,7 @@ this:Amount_value sh:path om:hasNumericalValue;
   core:enableOptional "true"^^xsd:boolean;
   core:enableNegation "true"^^xsd:boolean .
 
-this:Flood_location sh:path ontoflood:hasLocation;
+this:hasLocation sh:path ontoflood:hasLocation;
   sh:name "location"@en;
   sh:description "the location associated with a flood event"@en;
   sh:nodeKind sh:IRI;
