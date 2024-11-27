@@ -55,7 +55,7 @@ this:Location a sh:NodeShape;
   sh:nodeKind sh:IRI;
   rdfs:label "Location"@en;
   sh:description "The place or area where a natural hazard occurs"@en;
-  sh:property this:Location_country, this:Location_label .
+  sh:property this:Location_country, rdfs:label .
 
 this:Impact a sh:NodeShape;
   sh:order "3"^^xsd:integer;
@@ -271,17 +271,6 @@ this:Location_country sh:path dbpedia:Country;
   datasources:datasource datasources:list_rdfslabel_count;
   core:enableOptional "true"^^xsd:boolean;
   core:enableNegation "true"^^xsd:boolean .
-
-this:Location_label sh:path rdfs:label;
-  sh:name "label"@en;
-  sh:minCount "1"^^xsd:integer;
-  sh:nodeKind sh:Literal;
-  sh:datatype rdf:langString;
-  sh:node this:Text;
-  dash:searchWidget core:SearchProperty;
-  dash:propertyRole dash:LabelRole;
-  core:enableOptional "false"^^xsd:boolean;
-  core:enableNegation "false"^^xsd:boolean .
 
 this:Location_thumbnail sh:path dbpedia:thumbnail;
   sh:name "thumbnail"@en;
