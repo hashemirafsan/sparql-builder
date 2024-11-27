@@ -121,11 +121,12 @@ this:Flood_label sh:path rdfs:label;
   core:enableOptional "false"^^xsd:boolean;
   core:enableNegation "false"^^xsd:boolean .
 
-this:Location_label sh:path rdfs:label;
-  sh:name "label"@en;
+this:Location_label
+  sh:path rdfs:label;
+  sh:name "label";
   sh:minCount "1"^^xsd:integer;
   sh:nodeKind sh:Literal;
-  sh:datatype rdf:langString;
+  sh:datatype xsd:string;  # Changed from rdf:langString to xsd:string
   sh:node this:Text;
   dash:searchWidget core:SearchProperty;
   dash:propertyRole dash:LabelRole;
