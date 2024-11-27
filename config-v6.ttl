@@ -181,7 +181,7 @@ this:Location_country sh:path geospecies:hasCountry;
   core:enableOptional "true"^^xsd:boolean;
   core:enableNegation "true"^^xsd:boolean .
 
-this:Flood_startDate sh:path xsd:date;
+this:Flood_startDate sh:path ontoflood:hasStartDate;
   sh:name "start date"@en;
   sh:nodeKind sh:Literal;
   sh:node this:Date;
