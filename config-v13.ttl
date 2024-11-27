@@ -114,7 +114,7 @@ rdfs:label sh:path rdfs:label;
   sh:name "label"@en;
   sh:minCount "1"^^xsd:integer;
   sh:nodeKind sh:Literal;
-  sh:datatype rdf:langString;
+  sh:datatype xsd:string;
   sh:node this:Text;
   dash:searchWidget core:SearchProperty;
   dash:propertyRole dash:LabelRole;
