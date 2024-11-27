@@ -45,7 +45,7 @@ this:Flood a sh:NodeShape;
   sh:nodeKind sh:IRI;
   rdfs:label "Flood"@en;
   sh:description "An unusual accumulation of water above the ground caused by high tide, heavy rain, melting snow or rapid runoff from paved areas"@en;
-  sh:property this:Flood_label, this:Flood_location, this:Flood_startDate, this:Flood_impact,
+  sh:property rdfs:label, this:Flood_location, this:Flood_startDate, this:Flood_impact,
     this:Flood_thumbnail, this:Flood_description .
 
 this:Location a sh:NodeShape;
