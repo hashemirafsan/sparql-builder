@@ -38,10 +38,10 @@
 <https://www.theworldavatar.com/kg/ontoflood> a owl:Ontology;
   dcterms:source <https://raw.githubusercontent.com/cambridge-cares/TheWorldAvatar/refs/heads/main/JPS_Ontology/ontology/ontoflood/OntoFlood%20TBox.owl> .
 
-this:Flood a sh:NodeShape;
+obo:ENVO_01000710 a sh:NodeShape;
   sh:order "1"^^xsd:integer;
   volipi:iconName "fa-solid fa-paint-brush";
-  sh:targetClass ontoflood:Flood;
+  sh:targetClass obo:ENVO_01000710;
   sh:nodeKind sh:IRI;
   rdfs:label "Flood"@en;
   sh:description "An unusual accumulation of water above the ground caused by high tide, heavy rain, melting snow or rapid runoff from paved areas"@en;
@@ -115,18 +115,6 @@ rdfs:label sh:path rdfs:label;
   sh:minCount "1"^^xsd:integer;
   sh:nodeKind sh:Literal;
   sh:datatype rdf:langString;
-  sh:node this:Text;
-  dash:searchWidget core:SearchProperty;
-  dash:propertyRole dash:LabelRole;
-  core:enableOptional "false"^^xsd:boolean;
-  core:enableNegation "false"^^xsd:boolean .
-
-this:Location_label
-  sh:path rdfs:label;
-  sh:name "label";
-  sh:minCount "1"^^xsd:integer;
-  sh:nodeKind sh:Literal;
-  sh:datatype xsd:string;  # Changed from rdf:langString to xsd:string
   sh:node this:Text;
   dash:searchWidget core:SearchProperty;
   dash:propertyRole dash:LabelRole;
