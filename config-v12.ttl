@@ -43,7 +43,7 @@ obo:ENVO_01000710 a sh:NodeShape;
   volipi:iconName "fa-solid fa-paint-brush";
   sh:targetClass obo:ENVO_01000710;
   sh:nodeKind sh:IRI;
-  rdfs:label "Flood"@en;
+  rdfs:label "Flood";
   sh:description "An unusual accumulation of water above the ground caused by high tide, heavy rain, melting snow or rapid runoff from paved areas"@en;
   sh:property rdfs:label, this:hasLocation, this:Flood_startDate, this:Flood_impact,
     this:Flood_thumbnail, this:Flood_description .
@@ -53,7 +53,7 @@ this:Location a sh:NodeShape;
   volipi:iconName "fa-solid fa-globe-africa";
   sh:targetClass ontoflood:Location;
   sh:nodeKind sh:IRI;
-  rdfs:label "Location"@en;
+  rdfs:label "Location";
   sh:description "The place or area where a natural hazard occurs"@en;
   sh:property this:Location_country, rdfs:label .
 
